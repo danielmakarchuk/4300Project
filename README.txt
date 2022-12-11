@@ -8,7 +8,7 @@ The reciever recieves packets from the router and prints out stats about their j
 
 To run on the command line (3 terminals needed):
 
-First: have all componenets in the same file
+First: have all componenets in the same file on the same host (all use localhost for the host)
 you should have a:
 	sender.py
 	reciever.py
