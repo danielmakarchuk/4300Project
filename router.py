@@ -62,9 +62,9 @@ sendingsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:# try to connect to router
     sendingsocket.connect((hostnameRec, portRec))
 except Exception as e:
-    print("Something happened when connecting to reciever")
+    print("Something happened when connecting to reciever. program stopped")
     print(e)
-
+    sys.exit(0)
 # infastructure to send to reciever
 def doSend (packet):
     try:
@@ -115,7 +115,7 @@ while do:
             trySend()
             currTime = time.time() 
     except socket.error as e:
-        print("Socket Error.  troublesd socket removed from server")
+        print("Socket Error.  troubled socket removed from server")
         myClients.remove(aSocket) # remove trouble socket when it disconnects
         print(e)
     except TimeoutError as e:
@@ -126,8 +126,9 @@ while do:
         print("Program ended via interrupt")
         sys.exit(0)
     except Exception as e:
-        print("Something happened... I guess...")
+        print("Something happened.  program stopping")
         print(e)
+        sys.exit(0)
 # print appropriate router stats
 if method.lower() == "fifo":
     fifo.printLostPackets() 
@@ -137,3 +138,4 @@ elif method.lower() == "rr":
     roundRobin.printLostPackets() 
 elif method.lower() == "rerr":
     reservedRR.printLostPackets()    
+print("\nProcessing Over")

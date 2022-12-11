@@ -62,8 +62,9 @@ try:# try to send time.time() to reciever to be able to calculate the clock diff
     timeStuff = {"priority": "TIME", "time": time.time()}
     timesyncsoc.sendall((json.dumps(timeStuff)).encode())
 except Exception as e:
-    print("Something happened when connecting")
+    print("Something happened when sending time.  program stopped")
     print(e)
+    sys.exit(0)
 hostname = socket.gethostname()# use local hostname as host
 port = 8000    
 sendersocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -80,8 +81,10 @@ def doSend(packet):
         sending = (json.dumps(packet)).encode()
         sendersocket.sendall(sending)
     except Exception as e:
-        print("Something happened when sending")
+        
+        print("Something happened when sending, stopping program")
         print(e)   
+        sys.exit(0)
 
 # send the packets        
 for each in range(PACKETS_NUM):

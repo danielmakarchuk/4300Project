@@ -133,6 +133,8 @@ while do:
         print("RIP")
         sys.exit(0)
     except Exception as e:
-        print("Something happened... I guess...")
+        print("Something happened when recieving socket.  stopping program")
         print(e)
+        sys.exit(0)
 printStats() # print the stats
+print("\nProcessing Over")
