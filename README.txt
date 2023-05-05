@@ -25,7 +25,7 @@ Third: start the router with a forwarding approach on the same host:
 		re: for the round robin approach
 		pq: for the priority que approach
 		fifo: for the first in first out approach
-		Any other (or the lack of) input will break the code and you will need to restart the running process
+		Any other (or the lack of) input is not supported
 Fourth: start the sender on the same host as the other 2 with: 
 	python(3) sender.py
 		if you want to change the number of packets send change the PACKETS_NUM constant
